@@ -21,6 +21,7 @@
 <script>
 import {IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton} from '@ionic/vue';
 import { ref } from '@vue/reactivity';
+
 export default {
     emits: ['save-memory'],
     components: {

@@ -24,8 +24,9 @@ export default {
     // watch(route, () => {
     //   memoryId.value = route.params.id
     // })
- 
+
     const loadedMemory = computed(() => store.getters.getMemory(memoryId.value))
+    console.log(loadedMemory.value)
     return {memoryId, loadedMemory}
   }
 }

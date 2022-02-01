@@ -1,30 +1,31 @@
 import { ref } from 'vue';
 import {createStore} from 'vuex'
+import { v4 as uuidv4 } from "uuid";
 
 const store = createStore({
     state() {
         return {
             memories: [
                 {
-                    id: '1',
+                    id: uuidv4(),
                     image: "https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Pictures-3840x2160.jpg",
                     title: 'surfing',
                     description: 'surfing in hawaii'
                 },
                 {
-                    id: '2',
+                    id: uuidv4(),
                     title: 'study abroad',
                     image: 'https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Pictures-3840x2160.jpg',
                     description: 'study abroad in Italy'
                 },
                 {
-                    id: '3',
+                    id: uuidv4(),
                     title: 'hiking',
                     image: 'https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Pictures-3840x2160.jpg',
                     description: 'hiking in hawaii'
                 },
                 {
-                    id: '4',
+                    id: uuidv4(),
                     title: 'family reunion!',
                     image: 'https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Pictures-3840x2160.jpg',
                     description: 'family reunion in hawaii'
@@ -35,7 +36,7 @@ const store = createStore({
     mutations: {
         addMemory(state, memoryData) {
             const newMemory = {
-                id: new Date().toISOString,
+                id: uuidv4(),
                 title: memoryData.title,
                 image: memoryData.imageUrl,
                 description: memoryData.description
