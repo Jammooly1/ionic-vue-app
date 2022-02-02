@@ -6,8 +6,13 @@
                 <ion-input type="text" required v-model="title"/>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">Image URL</ion-label>
-                <ion-input type="url" required v-model="imageUrl"/>
+                <ion-thumbnail slot="start">
+                    <img src=""/>
+                </ion-thumbnail>
+                <ion-button type="button" fill="clear" @click="takePhoto">
+                    <ion-icon slot="start" :icon="camera"></ion-icon>
+                     Take Photo
+                </ion-button>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Description</ion-label>
@@ -19,7 +24,8 @@
 </template>
 
 <script>
-import {IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton} from '@ionic/vue';
+import {IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton, IonThumbnail, IonIcon} from '@ionic/vue';
+import { camera } from 'ionicons/icons'
 import { ref } from '@vue/reactivity';
 
 export default {
@@ -30,7 +36,9 @@ export default {
         IonLabel,
         IonInput,
         IonTextarea,
-        IonButton
+        IonButton,
+        IonThumbnail,
+        IonIcon
     },
     setup(_, {emit}) {
         const enteredTitle = ref('');
@@ -47,11 +55,17 @@ export default {
             emit('save-memory', memoryData)
         }
 
+        const takePhoto = () => {
+            
+        }
+
         return {
             title: enteredTitle,
             imageUrl: enteredImageUrl,
             description: enteredDescription,
-            submitForm
+            submitForm,
+            camera,
+            takePhoto
         }
     }
 }
