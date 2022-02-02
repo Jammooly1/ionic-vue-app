@@ -7,7 +7,7 @@
             </ion-item>
             <ion-item>
                 <ion-thumbnail slot="start">
-                    <img src=""/>
+                    <img :src="previewImageUrl"/>
                 </ion-thumbnail>
                 <ion-button type="button" fill="clear" @click="takePhoto">
                     <ion-icon slot="start" :icon="camera"></ion-icon>
