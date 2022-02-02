@@ -26,7 +26,8 @@
 <script>
 import {IonList, IonItem, IonLabel, IonInput, IonTextarea, IonButton, IonThumbnail, IonIcon} from '@ionic/vue';
 import { camera } from 'ionicons/icons'
-import { ref } from '@vue/reactivity';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { ref } from '@vue/reactivity'
 
 export default {
     emits: ['save-memory'],
@@ -44,6 +45,7 @@ export default {
         const enteredTitle = ref('');
         const enteredImageUrl = ref('');
         const enteredDescription = ref('');
+        const previewImageUrl = ref('');
 
         const submitForm = () => {
             const memoryData = {
@@ -55,8 +57,14 @@ export default {
             emit('save-memory', memoryData)
         }
 
-        const takePhoto = () => {
-            
+        const takePhoto = async() => {
+            const photo = await Camera.getPhoto({
+                quality: 60,
+                allowEditing: false,
+                resultType: CameraResultType.Uri,
+                source: CameraSource.Camera
+            })
+            previewImageUrl.value = photo.webPath;
         }
 
         return {
@@ -65,7 +73,8 @@ export default {
             description: enteredDescription,
             submitForm,
             camera,
-            takePhoto
+            takePhoto,
+            previewImageUrl
         }
     }
 }
